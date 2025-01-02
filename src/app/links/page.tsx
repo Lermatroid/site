@@ -1,7 +1,3 @@
-import { useWindowSize } from "usehooks-ts";
-import { useState } from "react";
-import Confetti from "react-confetti";
-import { toast } from "sonner";
 import Link from "next/link";
 
 export default function Page() {

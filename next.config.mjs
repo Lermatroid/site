@@ -49,6 +49,18 @@ const nextConfig = {
 			},
 		];
 	},
+	images: {
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "i.scdn.co",
+				pathname: "/image/**",
+			},
+		],
+	},
+	experimental: {
+		ppr: "incremental",
+	},
 };
 
 export default nextConfig;
