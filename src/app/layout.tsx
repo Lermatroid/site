@@ -1,14 +1,21 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Montserrat, Merriweather, Source_Code_Pro } from "next/font/google";
 import "./globals.css";
+import TanstackQueryProvider from "@/components/tanstack-query-provider";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const montserrat = Montserrat({
+  variable: "--font-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const merriweather = Merriweather({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  weight: ["300", "400", "700", "900"],
+});
+
+const sourceCodePro = Source_Code_Pro({
+  variable: "--font-mono",
   subsets: ["latin"],
 });
 
@@ -25,9 +32,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${montserrat.variable} ${merriweather.variable} ${sourceCodePro.variable} antialiased bg-background dark text-foreground`}
       >
-        {children}
+        <TanstackQueryProvider>{children}</TanstackQueryProvider>
       </body>
     </html>
   );
