@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Activity } from "./activity";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
@@ -31,7 +32,9 @@ export default function Home() {
           {":)"}
         </p>
       </div>
-      <Activity />
+      <Suspense>
+        <Activity />
+      </Suspense>
     </main>
   );
 }
