@@ -26,38 +26,75 @@ interface SteamGame {
 
 export function Activity() {
   // Fetch Spotify now-playing data
-  const { data: spotifyData, isLoading: spotifyLoading } =
-    useQuery<SpotifyResponse>({
-      queryKey: ["spotify-now-playing"],
-      queryFn: async () => {
-        console.log("[ACTIVITY] Fetching Spotify data");
-        const response = await fetch("/api/spotify/now-playing");
-        if (!response.ok) throw new Error("Failed to fetch Spotify data");
-        return response.json();
-      },
-      refetchInterval: (query) => {
-        // Use the nextRefreshIn value from the API response for dynamic polling
-        const data = query.state.data as SpotifyResponse | undefined;
-        return data?.nextRefreshIn ? data.nextRefreshIn * 1000 : 30000; // Convert to milliseconds, default to 30s
-      },
-      staleTime: 0, // Always refetch when the interval triggers
-    });
+  const {
+    data: spotifyData,
+    isLoading: spotifyLoading,
+    isError: spotifyError,
+    error: spotifyErrorDetails,
+  } = useQuery<SpotifyResponse>({
+    queryKey: ["spotify-now-playing"],
+    queryFn: async ({ signal }) => {
+      console.log("[ACTIVITY] Fetching Spotify data");
+      const response = await fetch("/api/spotify/now-playing", { signal });
+      if (!response.ok) {
+        throw new Error(
+          `Spotify API error: ${response.status} ${response.statusText}`
+        );
+      }
+      return response.json();
+    },
+    refetchInterval: (query) => {
+      // More robust way to handle dynamic polling
+      const data = query.state.data;
+      if (
+        data &&
+        "nextRefreshIn" in data &&
+        typeof data.nextRefreshIn === "number"
+      ) {
+        return data.nextRefreshIn * 1000;
+      }
+      return 30000; // Default to 30s
+    },
+    staleTime: 0, // Always refetch when the interval triggers
+    retry: (failureCount, error) => {
+      // Don't retry on 4xx errors, only on network issues
+      if (error instanceof Error && error.message.includes("4")) {
+        return false;
+      }
+      return failureCount < 3;
+    },
+  });
 
   // Fetch Steam recent game data
-  const { data: steamData, isLoading: steamLoading } =
-    useQuery<SteamGame | null>({
-      queryKey: ["steam-recent"],
-      queryFn: async () => {
-        console.log("[ACTIVITY] Fetching Steam data");
-        const response = await fetch("/api/steam/recent");
-        if (!response.ok) throw new Error("Failed to fetch Steam data");
-        return response.json();
-      },
-      staleTime: Infinity, // Data never becomes stale
-      refetchOnWindowFocus: false, // Do not refetch on window focus
-      refetchOnReconnect: false, // Do not refetch on reconnect
-      refetchInterval: false, // No polling
-    });
+  const {
+    data: steamData,
+    isLoading: steamLoading,
+    isError: steamError,
+    error: steamErrorDetails,
+  } = useQuery<SteamGame | null>({
+    queryKey: ["steam-recent"],
+    queryFn: async ({ signal }) => {
+      console.log("[ACTIVITY] Fetching Steam data");
+      const response = await fetch("/api/steam/recent", { signal });
+      if (!response.ok) {
+        throw new Error(
+          `Steam API error: ${response.status} ${response.statusText}`
+        );
+      }
+      return response.json();
+    },
+    staleTime: Infinity, // Data never becomes stale
+    refetchOnWindowFocus: false, // Do not refetch on window focus
+    refetchOnReconnect: false, // Do not refetch on reconnect
+    refetchInterval: false, // No polling
+    retry: (failureCount, error) => {
+      // Don't retry on 4xx errors, only on network issues
+      if (error instanceof Error && error.message.includes("4")) {
+        return false;
+      }
+      return failureCount < 3;
+    },
+  });
 
   return (
     <div className="flex flex-col gap-y-2 font-mono justify-start max-w-[600px] w-full pt-6">
@@ -75,6 +112,10 @@ export function Activity() {
         />
         {steamLoading ? (
           <span className="text-gray-500">Loading...</span>
+        ) : steamError ? (
+          <span className="text-red-500" title={steamErrorDetails?.message}>
+            Failed to load Steam data
+          </span>
         ) : steamData ? (
           <Link
             href={`https://store.steampowered.com/app/${steamData.appid}`}
@@ -98,6 +139,10 @@ export function Activity() {
         />
         {spotifyLoading ? (
           <span className="text-gray-500">Loading...</span>
+        ) : spotifyError ? (
+          <span className="text-red-500" title={spotifyErrorDetails?.message}>
+            Failed to load Spotify data
+          </span>
         ) : spotifyData?.isPlaying && spotifyData.track ? (
           <span className="">
             <Link href={spotifyData.track.songUrl} target="_blank">

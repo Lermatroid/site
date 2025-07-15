@@ -85,8 +85,8 @@ export default async function Page({ params }: PageProps) {
 
         return (
           <main className="py-10">
-            <section className="mx-auto px-5">
-              <div className="max-w-2xl w-full mx-auto font-mono flex gap-x-2 pb-5 text-md items-center justify-start">
+            <section className="mx-auto px-5 pb-5">
+              <div className="max-w-2xl w-full mx-auto font-mono flex gap-x-2 pb-16 text-md items-center justify-start">
                 <Link href="/blog" className="hover:underline">
                   {"<"} Blog
                 </Link>
@@ -107,6 +107,29 @@ export default async function Page({ params }: PageProps) {
                 title={postData.blog.morePosts}
               /> */}
             </section>
+            <div className="bg-card-foreground w-full max-w-2xl mx-auto text-sm rounded-sm p-5 text-card font-mono font-bold flex flex-col gap-y-2">
+              <span className="text-card/25">// END_OF_ARTICLE.md</span>
+              <span>- Thanks for reading!</span>
+              <span>
+                - If you enjoyed, feel free to follow me on{" "}
+                <Link href={"/links"} className="underline">
+                  the Internet
+                </Link>
+                .
+              </span>
+              <span>
+                - You can read more posts{" "}
+                <Link href={"/blog"} className="underline">
+                  here
+                </Link>{" "}
+                or explore the{" "}
+                <Link href={"/"} className="underline">
+                  rest of the site
+                </Link>
+                .
+              </span>
+              <span className="pt-2">Cheers! 🍻</span>
+            </div>
           </main>
         );
       }}

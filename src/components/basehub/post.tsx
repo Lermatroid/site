@@ -14,7 +14,7 @@ export function Post({
 }: PostFragmentType) {
   return (
     <article className="max-w-2xl mx-auto">
-      <h1 className="text-left text-balance font-bold leading-tigher tracking-tight text-8xl">
+      <h1 className="text-left text-balance font-bold leading-tigher tracking-tight text-7xl">
         {_title}
       </h1>
       <div className="flex gap-x-2 pb-12 pt-2">
