@@ -35,8 +35,8 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} ${merriweather.variable} ${sourceCodePro.variable} antialiased bg-background dark text-foreground`}
       >
-        <Toolbar />
         <TanstackQueryProvider>{children}</TanstackQueryProvider>
+        <Toolbar />
       </body>
     </html>
   );
