@@ -80,7 +80,7 @@ export function Activity() {
             href={`https://store.steampowered.com/app/${steamData.appid}`}
             target="_blank"
           >
-            <span>{steamData.name}</span>
+            <span title={"Last seen playing"}>{steamData.name}</span>
           </Link>
         ) : (
           <span className="text-gray-500">No recent games</span>
@@ -101,8 +101,11 @@ export function Activity() {
         ) : spotifyData?.isPlaying && spotifyData.track ? (
           <span className="">
             <Link href={spotifyData.track.songUrl} target="_blank">
-              {spotifyData.track.title} - {spotifyData.track.artist}{" "}
-            </Link>
+              {spotifyData.track.title.length > 35
+                ? spotifyData.track.title.slice(0, 35) + "…"
+                : spotifyData.track.title}{" "}
+              - {spotifyData.track.artist}
+            </Link>{" "}
             <span
               className="inline-flex gap-1 w-4 justify-center"
               title="Now Playing"
@@ -113,7 +116,7 @@ export function Activity() {
             </span>
           </span>
         ) : (
-          <span className="text-gray-500">Not playing</span>
+          <span className="text-gray-500">Offline</span>
         )}
       </div>
     </div>
