@@ -107,7 +107,7 @@ export default async function Page({ params }: PageProps) {
                 title={postData.blog.morePosts}
               /> */}
             </section>
-            <div className="bg-card-foreground w-full max-w-2xl mx-auto text-sm rounded-sm p-5 text-card font-mono font-bold flex flex-col gap-y-2">
+            <div className="bg-card-foreground w-2xl max-w-[calc(100vw-2.5rem)] mx-auto text-sm rounded-sm p-5 text-card font-mono font-bold flex flex-col gap-y-2">
               <span className="text-card/25">// END_OF_ARTICLE.md</span>
               <span>- Thanks for reading!</span>
               <span>
