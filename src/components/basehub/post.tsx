@@ -17,7 +17,7 @@ export function Post({
       <h1 className="text-left text-balance font-bold leading-tigher tracking-tight text-7xl">
         {_title}
       </h1>
-      <div className="flex gap-x-2 pb-12 pt-2">
+      <div className="flex gap-x-2 pb-12 pt-5">
         <div className="flex items-center gap-x-2">
           <Image
             className="rounded-full"

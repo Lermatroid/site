@@ -107,23 +107,34 @@ export default async function Page({ params }: PageProps) {
                 title={postData.blog.morePosts}
               /> */}
             </section>
-            <div className="bg-card-foreground w-2xl max-w-[calc(100vw-2.5rem)] mx-auto text-sm rounded-sm p-5 text-card font-mono font-bold flex flex-col gap-y-2">
-              <span className="text-card/25">// END_OF_ARTICLE.md</span>
+            <div className="bg-card/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-border/20 w-2xl max-w-[calc(100vw-2.5rem)] mx-auto text-sm p-8 text-card-foreground font-mono font-bold flex flex-col gap-y-2">
+              <span className="text-muted-foreground pb-2">
+                // END_OF_ARTICLE.md
+              </span>
               <span>- Thanks for reading!</span>
               <span>
                 - If you enjoyed, feel free to follow me on{" "}
-                <Link href={"/links"} className="underline">
+                <Link
+                  href={"/links"}
+                  className="underline decoration-dotted underline-offset-2"
+                >
                   the Internet
                 </Link>
                 .
               </span>
               <span>
                 - You can read more posts{" "}
-                <Link href={"/blog"} className="underline">
+                <Link
+                  href={"/blog"}
+                  className="underline decoration-dotted underline-offset-2"
+                >
                   here
                 </Link>{" "}
                 or explore the{" "}
-                <Link href={"/"} className="underline">
+                <Link
+                  href={"/"}
+                  className="underline decoration-dotted underline-offset-2"
+                >
                   rest of the site
                 </Link>
                 .
