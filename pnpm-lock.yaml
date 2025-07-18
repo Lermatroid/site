@@ -41,6 +41,9 @@ importers:
       react-dom:
         specifier: ^19.0.0
         version: 19.1.0(react@19.1.0)
+      react-github-calendar:
+        specifier: ^4.5.9
+        version: 4.5.9(react@19.1.0)
       shiki:
         specifier: ^3.8.0
         version: 3.8.0
@@ -1321,10 +1324,20 @@ packages:
   pusher-js@8.4.0:
     resolution: {integrity: sha512-wp3HqIIUc1GRyu1XrP6m2dgyE9MoCsXVsWNlohj0rjSkLf+a0jLvEyVubdg58oMk7bhjBWnFClgp8jfAa6Ak4Q==}
 
+  react-activity-calendar@2.7.13:
+    resolution: {integrity: sha512-1ZHVgK8QJxtwG52EmcQrxhUQyN1Bv+819IPTTDAGp7Hme3h9IX2thDZJG+KnVbNQ3cjh8DQdfX4wWsTHIw75ug==}
+    peerDependencies:
+      react: ^18.0.0 || ^19.0.0
+
   react-dom@19.1.0:
     resolution: {integrity: sha512-Xs1hdnE+DyKgeHJeJznQmYMIBG3TKIHJJT95Q58nHLSrElKlGQqDTR2HQ9fx5CN/Gk6Vh/kupBTDLU11/nDk/g==}
     peerDependencies:
       react: ^19.1.0
+
+  react-github-calendar@4.5.9:
+    resolution: {integrity: sha512-5Ks2vGbR4KieM0vO49hJKy6hLKpFo7kbtOg+Z67qz83VeJy094okTGLt9+k2oryN5PKfjn5sJr0UObXSvNgcNw==}
+    peerDependencies:
+      react: ^18.0.0 || ^19.0.0
 
   react@19.1.0:
     resolution: {integrity: sha512-FS+XFBNvn3GTAWq26joslQgWNoFu08F4kl0J4CgdNKADkdSGXQyTCnKteIAJy96Br6YbpEU1LSzV5dYtjMkMDg==}
@@ -2839,10 +2852,20 @@ snapshots:
     dependencies:
       tweetnacl: 1.0.3
 
+  react-activity-calendar@2.7.13(react@19.1.0):
+    dependencies:
+      date-fns: 4.1.0
+      react: 19.1.0
+
   react-dom@19.1.0(react@19.1.0):
     dependencies:
       react: 19.1.0
       scheduler: 0.26.0
+
+  react-github-calendar@4.5.9(react@19.1.0):
+    dependencies:
+      react: 19.1.0
+      react-activity-calendar: 2.7.13(react@19.1.0)
 
   react@19.1.0: {}
 
