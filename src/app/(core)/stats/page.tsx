@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { Home, Github } from "lucide-react";
+import { Github } from "lucide-react";
 import dynamic from "next/dynamic";
 
-// Dynamically import the contribution viewer to avoid SSR issues
-const ContributionViewer = dynamic(
-  () => import("react-contribution-viewer"),
+// Dynamically import the GitHub calendar to avoid SSR issues
+const GitHubCalendar = dynamic(
+  () => import("react-github-calendar"),
   { 
     ssr: false,
     loading: () => (
@@ -21,13 +21,12 @@ export default function StatsPage() {
   return (
     <main className="flex flex-col items-center justify-center min-h-screen w-full gap-y-6 px-5">
       {/* Header */}
-      <div className="max-w-[600px] flex flex-col">
-        <h2 className="font-sans text-5xl font-black pb-4 text-left text-balance">
-          Stats
-        </h2>
-        <h1 className="font-mono text-lg font-bold">
-          A glimpse into my digital footprint
-        </h1>
+      <div className="max-w-[600px] w-full flex flex-col items-start">
+        <div>
+          <h2 className="font-sans text-7xl font-black pb-10 text-left text-balance">
+            Stats
+          </h2>
+        </div>
       </div>
 
       {/* GitHub Contribution Chart */}
@@ -40,15 +39,13 @@ export default function StatsPage() {
             </h2>
           </div>
           <div className="overflow-hidden rounded-lg">
-            <ContributionViewer
+            <GitHubCalendar
               username="lermatroid"
-              isDark={true}
-              isHeader={true}
-              renderHeader={(total) => (
-                <div className="mb-4 font-mono text-sm text-muted-foreground">
-                  <span className="font-bold text-card-foreground">{total}</span> contributions in the last year
-                </div>
-              )}
+              colorScheme="dark"
+              fontSize={12}
+              blockSize={11}
+              blockMargin={4}
+              showWeekdayLabels
             />
           </div>
         </div>
@@ -152,19 +149,6 @@ export default function StatsPage() {
             </span>
           </div>
         </div>
-      </div>
-
-      {/* Navigation */}
-      <div className="flex items-start max-w-[600px] w-full">
-        <p className="font-mono font-bold">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 border-b-2 border-foreground"
-          >
-            <Home className="w-4 h-4" />
-            Home
-          </Link>
-        </p>
       </div>
     </main>
   );
