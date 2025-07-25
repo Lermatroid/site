@@ -86,7 +86,7 @@ export default function Page() {
             <span className="text-muted-foreground pb-2">
               // CURRENT_PROJECTS.md
             </span>
-            <span>## What I'm Building</span>
+            <span>## What I'm Building In My Free Time</span>
 
             {siteConfig.projects.map((project, index) => (
               <div key={index} className="mt-2">
