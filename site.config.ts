@@ -13,9 +13,15 @@ export interface Experience {
   linkTitle?: string;
 }
 
+export interface Link {
+  name: string;
+  url: string;
+}
+
 export interface SiteConfig {
   projects: Project[];
   experience: Experience[];
+  links: Link[];
 }
 
 export const siteConfig: SiteConfig = {
@@ -61,6 +67,28 @@ export const siteConfig: SiteConfig = {
       title: "Skills & Technologies",
       desc: "TypeScript/JavaScript • Go • React • Next.js • Node.js • Tailwind CSS • CSS • SQL • GCP • Docker • Kubernetes • Python",
       period: "Ongoing",
+    },
+  ],
+  links: [
+    {
+      name: "GitHub",
+      url: "https://github.com/lermatroid",
+    },
+    {
+      name: "Twitter",
+      url: "https://x.com/lermatroid",
+    },
+    {
+      name: "Instagram",
+      url: "https://www.instagram.com/lermatroid",
+    },
+    {
+      name: "LinkedIn",
+      url: "https://linkedin.com/in/liamrmurray",
+    },
+    {
+      name: "BlueSky",
+      url: "https://bsky.app/profile/liam.so",
     },
   ],
 };

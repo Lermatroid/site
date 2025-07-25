@@ -2,33 +2,13 @@ import Link from "next/link";
 import { Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
+import siteConfig from "../../../site.config";
 
 export const metadata: Metadata = {
   title: "Links",
 };
 
-const links = [
-  {
-    name: "GitHub",
-    url: "https://github.com/lermatroid",
-  },
-  {
-    name: "Twitter",
-    url: "https://x.com/lermatroid",
-  },
-  {
-    name: "Instagram",
-    url: "https://www.instagram.com/lermatroid",
-  },
-  {
-    name: "LinkedIn",
-    url: "https://linkedin.com/in/liamrmurray",
-  },
-  {
-    name: "BlueSky",
-    url: "https://bsky.app/profile/liam.so",
-  },
-];
+const links = siteConfig.links;
 
 export default function LinksPage() {
   return (
