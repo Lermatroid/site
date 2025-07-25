@@ -1,7 +1,12 @@
 import Link from "next/link";
 import { Github } from "lucide-react";
 import GitHubCalendar from "react-github-calendar";
+import type { Metadata } from "next";
 import { siteConfig } from "../../../../site.config";
+
+export const metadata: Metadata = {
+  title: "Stats",
+};
 
 export default function Page() {
   return (

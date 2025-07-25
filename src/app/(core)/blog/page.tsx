@@ -2,8 +2,13 @@ import { Pump } from "basehub/react-pump";
 import { fragmentOn } from "basehub";
 import Link from "next/link";
 import { format } from "date-fns";
+import type { Metadata } from "next";
 
 import { PostMetaFragment, type PostMetaFragmentType } from "./post";
+
+export const metadata: Metadata = {
+  title: "Blog",
+};
 
 export default function Page() {
   return (
