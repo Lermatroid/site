@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Montserrat, Merriweather, Source_Code_Pro } from "next/font/google";
 import "./globals.css";
 import TanstackQueryProvider from "@/components/tanstack-query-provider";
-import { Toolbar } from "basehub/next-toolbar";
 
 const montserrat = Montserrat({
   variable: "--font-sans",
@@ -64,7 +63,6 @@ export default function RootLayout({
         className={`${montserrat.variable} ${merriweather.variable} ${sourceCodePro.variable} antialiased bg-background dark text-foreground`}
       >
         <TanstackQueryProvider>{children}</TanstackQueryProvider>
-        <Toolbar />
       </body>
     </html>
   );

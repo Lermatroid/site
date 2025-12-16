@@ -193,6 +193,10 @@
   }
 }
 
+.prose figcaption {
+  @apply text-center;
+}
+
 @keyframes soundwave {
   0%,
   100% {
