@@ -59,6 +59,11 @@ const nextConfig: NextConfig = {
         destination: "https://fs.liam.so/Liam%20Murray%20Resume%202024.pdf",
         permanent: false,
       },
+      {
+        source: "/steam",
+        destination: "https://steamcommunity.com/id/lermatroid",
+        permanent: false,
+      },
     ];
   },
   images: {
