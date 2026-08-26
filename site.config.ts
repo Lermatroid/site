@@ -55,7 +55,7 @@ export const siteConfig: SiteConfig = {
       title: "ACM VP & RowdyHacks Co-Director",
       desc: "Vice-president of ACM UTSA and co-director of RowdyHacks. Co-directed West Texas's largest hackathon with over 600 attendees. Managed large nonprofit organization with over 1000 members.",
       period: "2021-2025",
-      link: "https://www.utsa.edu/today/2024/10/story/fall-2024-rowdyhacks.html",
+      link: "https://news.utsa.edu/2024/10/students-travel-back-to-the-future-for-utsas-rowdyhacks-today/",
       linkTitle: "News Article",
     },
     {
